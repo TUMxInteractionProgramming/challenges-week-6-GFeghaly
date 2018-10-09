@@ -1,6 +1,7 @@
 /* start the external action and say hello */
 console.log("App is alive");
 
+
  
 /** #10 global #array of channels #arr*/
 var channels = [
@@ -72,7 +73,7 @@ function switchChannel(channelObject,ChannelElement) {
     */
     function showMessages() {
     
-        $.each([killerapp.messages], function( i, value ){
+        $.each([yummy.messages], function( i, value ){
             $('#messages').append(value);
             
           });
