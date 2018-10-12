@@ -73,9 +73,16 @@ function switchChannel(channelObject,ChannelElement) {
     */
     function showMessages() {
     
-        $.each([yummy.messages], function( i, value ){
-            $('#messages').append(value);
+                 
+          $("p").each(channels,function(index,value){
             
+            
+            $('#messages').append( index + value.messages);
+                
+                        
+            
+            //alert(index + ":" + value.messages);
+           
           });
       
     }
@@ -190,8 +197,9 @@ function createMessageElement(messageObject) {
     // Calculating the expiresIn-time from the expiresOn-property
     var expiresIn = Math.round((messageObject.expiresOn - Date.now()) / 1000 / 60);
 
+         
     // Creating a message-element
-    return '<div class="message'+
+    messageObject= '<div class="message'+
         //this dynamically adds #own to the #message, based on the
         //ternary operator. We need () in order not to disrupt the return.
         (messageObject.own ? ' own' : '') +
@@ -203,6 +211,14 @@ function createMessageElement(messageObject) {
         '<p>' + messageObject.text + '</p>' +
         '<button class="accent">+5 min.</button>' +
         '</div>';
+        
+        channels.messages=messageObject;
+        console.log("Reference Message:",channels.messages);
+        return messageObject;
+       
+    
+    //Return
+    //$('#messages').append( channels.messages);
 }
 
 /* #10 Three #compare functions to #sort channels */
@@ -345,7 +361,9 @@ function createChannelElement(channelObject) {
        // $(this).switchChannel(channelObject.name);
       });*/
     var channel = $('<li>').text(channelObject.name); 
-    channel.click(function() {switchChannel(channelObject)});
+    channel.click(function() {
+        switchChannel(channelObject);
+    });
      
 
     // create a channel

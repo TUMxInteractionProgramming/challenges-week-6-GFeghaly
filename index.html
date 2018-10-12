@@ -30,7 +30,16 @@
         listChannels(compareNew); 
         loadEmojis();
         console.log( "The DOM is now loaded and can be manipulated." );
-        });
+
+        //#interval wich triggers every ten seconds that will log : "Updating Message elements..."
+        var intervalID = window.setInterval(myCallback, 10000);
+
+        function myCallback(){
+        console.log("Updating Message elements...");
+        }
+        
+    
+    });
     
     </script>
    
